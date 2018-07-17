@@ -112,9 +112,10 @@ DEBUG = getenv_bool('DEBUG')
 ## SLACK
 #########################################
 
-## Slack
-# https://github.com/taigaio/taiga-contrib-slack
-INSTALLED_APPS += ["taiga_contrib_slack"]
+if getenv_bool('SLACK_ENABLED'):
+    ## Slack
+    # https://github.com/taigaio/taiga-contrib-slack
+    INSTALLED_APPS += ["taiga_contrib_slack"]
 
 #########################################
 ## LDAP

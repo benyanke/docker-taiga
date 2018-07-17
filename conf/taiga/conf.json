@@ -12,5 +12,5 @@
     "termsOfServiceUrl": "",
     "maxUploadFileSize": null,
     LOGIN_FORM_TYPE
-    "contribPlugins": []
+    "contribPlugins": [CONTRIB_PLUGINS]
 }

@@ -41,6 +41,25 @@ else
   sed -i 's/LOGIN_FORM_TYPE//g' /taiga/conf.json
 fi
 
+# List of plugin values for contribPlugins
+PLUGINS=()
+
+# ToDo: write additional plugin specific options into conf.json
+SLACK_ENABLED="$(echo $SLACK_ENABLED | sed -e 's/\(.*\)/\L\1/')"
+if [ "$SLACK_ENABLED" = "true" ]; then
+  PLUGINS+=('/plugins/slack/slack.json')
+fi
+
+if [ -n "$PLUGINS" ]; then
+  # Return quoted comma seperated list
+  CONTRIB_PLUGINS=$(printf ',"%s"' "${PLUGINS[@]}")
+  
+  # Ignore first character
+  sed -i "s|CONTRIB_PLUGINS|${CONTRIB_PLUGINS:1}|g" /taiga/conf.json
+else
+  sed -i 's/CONTRIB_PLUGINS//g' /taiga/conf.json
+fi
+
 # Look to see if we should set the "eventsUrl"
 if [ ! -z "$RABBIT_PORT_5672_TCP_ADDR" ]; then
   echo "Enabling Taiga Events"
