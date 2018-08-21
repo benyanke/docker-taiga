@@ -105,6 +105,10 @@ services:
       # Enable SSL externally, preferred method
       TAIGA_SSL_BY_REVERSE_PROXY: ${TAIGA_SSL_BY_REVERSE_PROXY}
 
+      TAIGA_WEBSOCKETS_ENABLE: ${TAIGA_WEBSOCKETS_ENABLE}
+      TAIGA_WEBSOCKETS_CONTAINER_NAME: events
+
+
     volumes:
       # Media and uploads directory. Required (or you will lose all uploads)
       - ./media:/usr/src/taiga-back/media
