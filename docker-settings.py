@@ -67,12 +67,16 @@ if getenv_bool('TAIGA_EVENTS_ENABLE'):
         os.getenv('EVENT_VHOST')
     )
 
-    # BROKER_URL = 'amqp://guest:guest@rabbit:5672'
-    CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
-    CELERY_ENABLED = True
-
     EVENTS_PUSH_BACKEND = "taiga.events.backends.rabbitmq.EventsPushBackend"
     EVENTS_PUSH_BACKEND_OPTIONS = {"url": BROKER_URL}
+
+#########################################
+## ASYNC TASKS
+#########################################
+
+if getenv_bool('TAIGA_ASYNC_ENABLE'):
+    CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+    CELERY_ENABLED = True
 
 #########################################
 ## EMAIL
