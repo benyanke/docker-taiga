@@ -57,7 +57,7 @@ SECRET_KEY = os.getenv('TAIGA_SECRET_KEY')
 ## EVENTS/WEBSOCKETS
 #########################################
 
-if os.getenv('RABBIT_PORT') is not None and os.getenv('REDIS_PORT') is not None:
+if getenv_bool('TAIGA_EVENTS_ENABLE'):
     from .celery import *
 
     BROKER_URL = 'amqp://' + os.getenv('EVENT_USER') + ':' +
