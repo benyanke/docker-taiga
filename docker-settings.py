@@ -61,15 +61,9 @@ if getenv_bool('TAIGA_EVENTS_ENABLE'):
     from .celery import *
 
     BROKER_URL = (
-        'amqp://'
-        os.getenv('EVENT_USER')
-        ':'
-        os.getenv('EVENT_PW')
-        '@'
-        os.getenv('EVENT_HOST')
-        ':'
-        os.getenv('EVENT_RABBITPORT')
-        '/'
+        'amqp://' +
+        os.getenv('EVENT_USER') + ':' + os.getenv('EVENT_PW') + '@' +
+        os.getenv('EVENT_HOST') + ':' + os.getenv('EVENT_RABBITPORT') + '/' +
         os.getenv('EVENT_VHOST')
     )
 
