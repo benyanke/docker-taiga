@@ -69,6 +69,8 @@ if getenv_bool('TAIGA_EVENTS_ENABLE'):
         os.getenv('EVENT_HOST')
         ':'
         os.getenv('EVENT_RABBITPORT')
+        '/'
+        os.getenv('EVENT_VHOST')
     )
 
     # BROKER_URL = 'amqp://guest:guest@rabbit:5672'
