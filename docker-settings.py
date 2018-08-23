@@ -72,7 +72,7 @@ if getenv_bool('TAIGA_EVENTS_ENABLE'):
     CELERY_ENABLED = True
 
     EVENTS_PUSH_BACKEND = "taiga.events.backends.rabbitmq.EventsPushBackend"
-    EVENTS_PUSH_BACKEND_OPTIONS = {"url": BROKER_URL + "/"}
+    EVENTS_PUSH_BACKEND_OPTIONS = {"url": BROKER_URL}
 
 #########################################
 ## EMAIL
