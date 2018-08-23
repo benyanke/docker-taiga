@@ -62,15 +62,15 @@ RUN echo "LANG=en_US.UTF-8" >> /etc/default/locale && \
     echo "LC_MESSAGES=POSIX" >> /etc/default/locale && \
     echo "LANGUAGE=en" >> /etc/default/locale
 
-ENV LANG en_US.UTF-8
-ENV LC_TYPE en_US.UTF-8
+
+ENV LANG en_US.UTF-8 \
+    LC_TYPE en_US.UTF-8 \
+    TAIGA_SSL False \
+    TAIGA_ENABLE_EMAIL False \
+    TAIGA_HOSTNAME localhost \
+    TAIGA_SECRET_KEY "!!!REPLACE-ME-j1598u1J^U*(y251u98u51u5981urf98u2o5uvoiiuzhlit3)!!!"
 
 RUN locale-gen en_US.UTF-8 && locale -a
-
-ENV TAIGA_SSL False
-ENV TAIGA_ENABLE_EMAIL False
-ENV TAIGA_HOSTNAME localhost
-ENV TAIGA_SECRET_KEY "!!!REPLACE-ME-j1598u1J^U*(y251u98u51u5981urf98u2o5uvoiiuzhlit3)!!!"
 
 RUN python manage.py collectstatic --noinput
 
@@ -83,7 +83,6 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
 EXPOSE 80 443
 
 VOLUME /usr/src/taiga-back/media
-
 
 # Static file serving
 HEALTHCHECK CMD curl --fail http://localhost:80/conf.json || exit 1
