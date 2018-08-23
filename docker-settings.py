@@ -60,8 +60,16 @@ SECRET_KEY = os.getenv('TAIGA_SECRET_KEY')
 if getenv_bool('TAIGA_EVENTS_ENABLE'):
     from .celery import *
 
-    BROKER_URL = 'amqp://' + os.getenv('EVENT_USER') + ':' + os.getenv('EVENT_PW')
-    BROKER_URL += '@' + os.getenv('EVENT_HOST') + ':' + os.getenv('EVENT_RABBITPORT')
+    BROKER_URL = (
+        'amqp://'
+        os.getenv('EVENT_USER')
+        ':'
+        os.getenv('EVENT_PW')
+        '@'
+        os.getenv('EVENT_HOST')
+        ':'
+        os.getenv('EVENT_RABBITPORT')
+    )
 
     # BROKER_URL = 'amqp://guest:guest@rabbit:5672'
     CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
