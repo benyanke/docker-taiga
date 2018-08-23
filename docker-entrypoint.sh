@@ -42,7 +42,7 @@ else
 fi
 
 # Look to see if we should set the "eventsUrl"
-if [ "$TAIGA_WEBSOCKETS_ENABLE" = "true" ]; then
+if [ "$TAIGA_EVENTS_ENABLE" = "true" ]; then
   echo "Enabling Taiga Events"
   sed -i "s/eventsUrl\": null/eventsUrl\": \"ws:\/\/$TAIGA_HOSTNAME\/events\"/g" /taiga/conf.json
   mv /etc/nginx/taiga-events.conf /etc/nginx/conf.d/default.conf
