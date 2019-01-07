@@ -81,6 +81,7 @@ services:
       - TAIGA_EMAIL_PORT
       - TAIGA_EMAIL_USER
       - TAIGA_EMAIL_PASS
+      - TAIGA_FEEDBACK_EMAIL
  
       # Secret key for encryption
       - TAIGA_SECRET_KEY

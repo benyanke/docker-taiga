@@ -220,7 +220,11 @@ if getenv_bool('LDAP_ENABLED'):
 #########################################
 
 # Note: See config in taiga-front too
-FEEDBACK_ENABLED = False
+if os.getenv('TAIGA_FEEDBACK_EMAIL') is not None:
+    FEEDBACK_ENABLED = os.getenv('TAIGA_FEEDBACK_EMAIL')
+else:
+    FEEDBACK_ENABLED = False
+
 # FEEDBACK_EMAIL = "support@taiga.io"
 
 
