@@ -24,7 +24,9 @@ if [ -z "$TAIGA_SKIP_DB_CHECK" ]; then
 fi
 
 # Reload the fixtures on each run to ensure they're up to date
-python manage.py loaddata initial_project_templates
+echo "Regenerating fixtures"
+python manage.py loaddata initial_project_templates || exit 1
+echo "Fixtures regenerated successfully"
 
 # Copy the config file fresh so that it works properly even if container is
 # kept around for another run
