@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN set -x && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
-        cairo \
+        python3-cairo \
         locales \
         gettext \
         ca-certificates \
