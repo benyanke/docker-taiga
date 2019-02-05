@@ -18,11 +18,13 @@ if [ -z "$TAIGA_SKIP_DB_CHECK" ]; then
   # Run the initial data seeder functions if we're starting with a fresh database
   if [ $DB_CHECK_STATUS -eq 1 ]; then
     echo "Configuring initial database"
-    # python manage.py loaddata initial_user
-    python manage.py loaddata initial_project_templates
-    # python manage.py loaddata initial_role
+    python manage.py loaddata initial_user
+    python manage.py loaddata initial_role
   fi
 fi
+
+# Reload the fixtures on each run to ensure they're up to date
+python manage.py loaddata initial_project_templates
 
 # Copy the config file fresh so that it works properly even if container is
 # kept around for another run
