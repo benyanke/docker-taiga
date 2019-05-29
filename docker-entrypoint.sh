@@ -55,13 +55,27 @@ else
   sed -i 's/LOGIN_FORM_TYPE//g' /taiga/conf.json
 fi
 
+# Check for SAML
+if [ "$LDAP_ENABLED" = "true" ]; then
+  sed -i 's/LOGIN_FORM_TYPE/"loginFormType": "ldap",/g' /taiga/conf.json
+else
+  sed -i 's/LOGIN_FORM_TYPE//g' /taiga/conf.json
+fi
+
 # List of plugin values for contribPlugins
 PLUGINS=()
 
-# ToDo: write additional plugin specific options into conf.json
+
+# Convert to lowercase
 SLACK_ENABLED="$(echo $SLACK_ENABLED | sed -e 's/\(.*\)/\L\1/')"
 if [ "$SLACK_ENABLED" = "true" ]; then
   PLUGINS+=('/plugins/slack/slack.json')
+fi
+
+# Convert to lowercase
+SAML_ENABLED="$(echo $SAML_ENABLED | sed -e 's/\(.*\)/\L\1/')"
+if [ "$SAML_ENABLED" = "true" ]; then
+  PLUGINS+=('/plugins/saml-auth/saml-auth.json')
 fi
 
 if [ -n "$PLUGINS" ]; then

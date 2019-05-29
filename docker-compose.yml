@@ -52,6 +52,9 @@ services:
       - TAIGA_HOSTNAME
       - ALLOWED_REGISTER_DOMAINS
 
+      # SAML
+      - SAML_ENABLED
+
       # LDAP
       - LDAP_ENABLED
       - LDAP_USE_SSL

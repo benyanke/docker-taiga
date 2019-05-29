@@ -128,6 +128,17 @@ if getenv_bool('SLACK_ENABLED'):
     INSTALLED_APPS += ["taiga_contrib_slack"]
 
 #########################################
+## SAML
+#########################################
+
+if getenv_bool('SAML_ENABLED'):
+
+    # Install plugin
+    INSTALLED_APPS += ["taiga_contrib_saml_auth"]
+
+    
+
+#########################################
 ## LDAP
 #########################################
 
