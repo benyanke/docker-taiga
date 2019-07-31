@@ -40,7 +40,6 @@ RUN ln -s /taiga/local.py /usr/src/taiga-back/settings/local.py && \
 # Backwards compatibility
 RUN mkdir -p /usr/src/taiga-front-dist/dist/js/ && ln -s /taiga/conf.json /usr/src/taiga-front-dist/dist/js/conf.json
 
-
 # specify LANG to ensure python installs locals properly
 # fixes benhutchins/docker-taiga-example#4
 # ref benhutchins/docker-taiga#15
