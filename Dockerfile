@@ -19,7 +19,6 @@ WORKDIR /usr/src/taiga-back
 COPY taiga-back/requirements.txt /usr/src/taiga-back/
 RUN pip install --no-cache-dir -r requirements.txt
 
-
 COPY taiga-back /usr/src/taiga-back
 COPY taiga-front-dist/ /usr/src/taiga-front-dist
 COPY docker-settings.py /usr/src/taiga-back/settings/docker.py
